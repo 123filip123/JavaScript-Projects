@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+         .up {
+            display: inline-block;
+        } 
+        hr{
+            width:90%;
+            color:gray;
+        }
+        
+        .igContainer{
+            float: right;
+            padding-top: 4%;
+            padding-right: 2%;
+        }
+
+        P{
+            padding-left: 2%;
+            padding-right: 2%;
+            
+        }
+        .userAndDate{
+            vertical-align: top; 
+            padding-top: 3%;
+            
+        }
+
+        .post_picture {
+            max-width: 98%;
+            height: 300px;
+            
+        }
+        .likesRow{
+            max-width: 98%;
+        }
+
+        svg{
+            padding-left: 2%;
+        }
+        
+
+        .profilePic {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            margin-left: 2%;
+            padding-right: 2%;
+            padding-top:10%;
+        }
+
+        .captionRow{
+            height:auto;
+        }
+
+        .loadMoreButton {
+            display: inline;
+            float: none;
+
+        }
+        .profileRow{
+            display: inline;
+            
+            width: 98%;
+            padding-left: 1%;
+            height:50px;
+
+        }
+
+        .igLogo {
+            
+        }
+
+        .liked {
+            fill: red
+        }
+
+        
+        .postPictureRow{
+            text-align: center;
+        }
+
+        .card {
+
+            display: block;
+            border-style: groove;
+            width: 100%;
+        }
+        .buttonContainer{
+            text-align: center;
+        }
+        .cardContainer {
+            display: table;
+            width: 100%;
+
+        }
+
+        /* media query for tablet */
+        @media only screen and (min-width: 768px) {
+             
+                
+            .cardContainer{
+                display: block;
+            }
+            .card {
+                display: table-cell;
+                width: 50%;
+            }
+            P{
+                height:220px;
+            }
+        }
+
+        /* media query for PC */
+        @media only screen and (min-width: 992px) {
+            .twoCardsGroup{
+                display: table-cell;
+                width: auto;
+            }
+            .card {
+                display: table-cell;
+                width: 25%;
+                min-width: 300px;
+            }
+            P{
+                height:220px;
+            }
+            .cardContainer {
+            display: table;
+            width: 100%;
+            
+            }
+            .html{
+                position: absolute;
+            }
+
+
+
+        
+        }
+
+       
+        
+        
+        
+    </style>
+
+    <title>EmbedSocial JS & CSS Challenge</title>
+</head>
+
+<body></body>
+<script>
+    const json = `[ { "image": "https://placekitten.com/600/400", "caption": "Duis in facilisis lectus. Nulla molestie erat erat, quis tempor enim sodales vitae. Sed tempus, libero fringilla rhoncus ullamcorper, justo elit dignissim ex, nec elementum quam sem in urna.", "type": "image", "source_type": "facebook", "source_link": "https://www.facebook.com/EmbedSocial/", "date": "2018-03-12 03:00:00", "likes": "123", "name": "John Smith", "profile_image": "https://placekitten.com/g/100/100" }, { "image": "https://placekitten.com/600/410", "caption": "Quisque metus nisi, consequat et molestie eget, facilisis ac odio. Nam lorem libero, efficitur ac velit at, egestas tempor arcu. Nullam pharetra ex eget orci lobortis malesuada. Maecenas eget porta felis. Aliquam porttitor, nibh nec ullamcorper fermentum, eros velit lobortis justo, pretium consectetur turpis enim ut nunc. Fusce convallis, ex ut ultrices sodales, ante quam venenatis arcu, vitae mollis magna urna vel eros. Aliquam a sapien nisi. Nullam convallis malesuada suscipit. ", "type": "image", "source_type": "instagram", "source_link": "https://instagram.com/embedsocial/", "date": "2019-01-12 03:00:00", "likes": "0", "name": "John Smith", "profile_image": "https://placekitten.com/g/150/100" }, { "image": "https://placekitten.com/600/420", "caption": "", "type": "image", "source_type": "facebook", "source_link": "https://instagram.com/embedsocial/", "date": "2017-01-21 03:00:00", "likes": "9866555", "name": "John Smith", "profile_image": "https://placekitten.com/g/100/150" }, { "image": "https://placekitten.com/600/430", "caption": "Etiam eu blandit nisi. Aliquam rutrum faucibus mauris, sed egestas odio viverra at. In elementum sit amet sapien vitae bibendum.", "type": "image", "source_type": "facebook", "source_link": "https://www.facebook.com/EmbedSocial/", "date": "2019-12-12 03:00:00", "likes": "2", "name": "John Smith", "profile_image": "https://placekitten.com/g/120/120" }, { "image": "https://placekitten.com/600/440", "caption": "Vivamus a sem sit amet nisi pretium pretium. Curabitur blandit ut lectus non bibendum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris leo odio, consectetur a lorem vitae, aliquet placerat orci. Phasellus varius ante sit amet quam mollis, eu efficitur tortor blandit.", "type": "image", "source_type": "facebook", "source_link": "https://instagram.com/embedsocial/", "date": "2018-04-12 03:00:00", "likes": "12343", "name": "John Smith", "profile_image": "https://placekitten.com/g/50/50" }, { "image": "https://placekitten.com/600/440", "caption": "Duis in facilisis lectus. Nulla molestie erat erat, quis tempor enim sodales vitae. Sed tempus, libero fringilla rhoncus ullamcorper, justo elit dignissim ex, nec elementum quam sem in urna.", "type": "image", "source_type": "facebook", "source_link": "https://www.facebook.com/EmbedSocial/", "date": "2019-12-12 03:00:00", "likes": "123", "name": "John Smith", "profile_image": "https://placekitten.com/g/101/101" }, { "image": "https://placekitten.com/800/400", "caption": "Duis in facilisis lectus. Nulla molestie erat erat, quis tempor enim sodales vitae. Sed tempus, libero fringilla rhoncus ullamcorper, justo elit dignissim ex, nec elementum quam sem in urna.", "type": "image", "source_type": "facebook", "source_link": "https://www.facebook.com/EmbedSocial/", "date": "2019-12-12 03:00:00", "likes": "12", "name": "John Smith", "profile_image": "https://placekitten.com/g/150/120" }, { "image": "https://placekitten.com/600/500", "caption": "Vivamus a sem sit amet nisi pretium pretium. Curabitur blandit ut lectus non bibendum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris leo odio, consectetur a lorem vitae, aliquet placerat orci. Phasellus varius ante sit amet quam mollis, eu efficitur tortor blandit.", "type": "image", "source_type": "facebook", "source_link": "https://instagram.com/embedsocial/", "date": "2017-12-12 03:00:00", "likes": "23", "name": "John Smith", "profile_image": "https://placekitten.com/g/140/140" }, { "image": "https://placekitten.com/700/400", "caption": "Pellentesque lacinia volutpat turpis non fermentum. Cras at pellentesque augue. Aliquam eget metus sit amet turpis consectetur posuere.", "type": "image", "source_type": "facebook", "source_link": "https://www.facebook.com/EmbedSocial/", "date": "2017-12-08 03:00:00", "likes": "0", "name": "John Smith", "profile_image": "https://placekitten.com/g/100/100" }, { "image": "https://placekitten.com/700/500", "caption": "Duis in facilisis lectus. Nulla molestie erat erat, quis tempor enim sodales vitae. Sed tempus, libero fringilla rhoncus ullamcorper, justo elit dignissim ex, nec elementum quam sem in urna.", "type": "image", "source_type": "facebook", "source_link": "https://www.facebook.com/EmbedSocial/", "date": "2019-02-12 03:00:00", "likes": "0", "name": "John Smith", "profile_image": "https://placekitten.com/g/102/102" }, { "image": "https://placekitten.com/800/600", "caption": "Aliquam odio libero, malesuada et iaculis a, facilisis bibendum dolor. Vivamus ultricies congue arcu eu porttitor. Integer libero tortor, volutpat a purus id, mattis tristique tortor. ", "type": "image", "source_type": "facebook", "source_link": "https://www.facebook.com/EmbedSocial/", "date": "2019-12-12 03:00:00", "likes": "2", "name": "John Smith", "profile_image": "https://placekitten.com/g/103/100" }, { "image": "https://placekitten.com/700/600", "caption": "Duis in facilisis lectus.", "type": "image", "source_type": "facebook", "source_link": "https://instagram.com/embedsocial/", "date": "2020-12-12 03:00:00", "likes": "1", "name": "John Smith", "profile_image": "https://placekitten.com/g/40/100" }, { "image": "https://placekitten.com/1600/1400", "caption": "Nulla molestie erat erat, quis tempor enim sodales vitae. Sed tempus, libero fringilla rhoncus ullamcorper, justo elit dignissim ex, nec elementum quam sem in urna.", "type": "image", "source_type": "facebook", "source_link": "https://www.facebook.com/EmbedSocial/", "date": "2019-12-15 03:00:00", "likes": "2324", "name": "John Smith", "profile_image": "https://placekitten.com/g/80/100" }, { "image": "https://placekitten.com/1600/400", "caption": "Aliquam odio libero, malesuada et iaculis a, facilisis bibendum dolor.", "type": "image", "source_type": "facebook", "source_link": "https://www.facebook.com/EmbedSocial/", "date": "2019-10-12 03:00:00", "likes": "1223", "name": "John Smith", "profile_image": "https://placekitten.com/g/80/80" }, { "image": "https://placekitten.com/2000/4000", "caption": "Quis tempor enim sodales vitae. Sed tempus, libero fringilla rhoncus ullamcorper, justo elit dignissim ex, nec elementum quam sem in urna.", "type": "image", "source_type": "facebook", "source_link": "https://instagram.com/embedsocial/", "date": "2016-12-12 03:00:00", "likes": "12223", "name": "John Smith", "profile_image": "https://placekitten.com/g/110/110" }, { "image": "https://placekitten.com/900/600", "caption": " Suspendisse finibus lorem nibh, facilisis ullamcorper nunc consequat sit amet. Curabitur ultricies magna ante, ac eleifend lorem auctor porta. Nullam volutpat aliquet lorem, et posuere ex aliquet eu. Quisque elementum sem mauris, a mattis est scelerisque vitae. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut quis massa eget ligula euismod sagittis id congue quam. Duis vestibulum eros sed tincidunt rutrum. Pellentesque in malesuada velit.", "type": "image", "source_type": "facebook", "source_link": "https://www.facebook.com/EmbedSocial/", "date": "2017-12-12 03:00:00", "likes": "0", "name": "John Smith", "profile_image": "https://placekitten.com/g/110/100" }, { "image": "https://placekitten.com/600/410", "caption": "Quisque metus nisi, consequat et molestie eget, facilisis ac odio. Nam lorem libero, efficitur ac velit at, egestas tempor arcu. Nullam pharetra ex eget orci lobortis malesuada. Maecenas eget porta felis. Aliquam porttitor, nibh nec ullamcorper fermentum, eros velit lobortis justo, pretium consectetur turpis enim ut nunc. Fusce convallis, ex ut ultrices sodales, ante quam venenatis arcu, vitae mollis magna urna vel eros. Aliquam a sapien nisi. Nullam convallis malesuada suscipit. ", "type": "image", "source_type": "instagram", "source_link": "https://instagram.com/embedsocial/", "date": "2019-01-12 03:00:00", "likes": "0", "name": "John Smith", "profile_image": "https://placekitten.com/g/150/100" }, { "image": "https://placekitten.com/600/420", "caption": "", "type": "image", "source_type": "facebook", "source_link": "https://instagram.com/embedsocial/", "date": "2017-01-21 03:00:00", "likes": "9866555", "name": "John Smith", "profile_image": "https://placekitten.com/g/100/150" }, { "image": "https://placekitten.com/600/430", "caption": "Etiam eu blandit nisi. Aliquam rutrum faucibus mauris, sed egestas odio viverra at. In elementum sit amet sapien vitae bibendum.", "type": "image", "source_type": "facebook", "source_link": "https://www.facebook.com/EmbedSocial/", "date": "2019-12-12 03:00:00", "likes": "2", "name": "John Smith", "profile_image": "https://placekitten.com/g/120/120" }, { "image": "https://placekitten.com/600/440", "caption": "Vivamus a sem sit amet nisi pretium pretium. Curabitur blandit ut lectus non bibendum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris leo odio, consectetur a lorem vitae, aliquet placerat orci. Phasellus varius ante sit amet quam mollis, eu efficitur tortor blandit.", "type": "image", "source_type": "facebook", "source_link": "https://instagram.com/embedsocial/", "date": "2018-04-12 03:00:00", "likes": "12343", "name": "John Smith", "profile_image": "https://placekitten.com/g/50/50" } ]`;
+    const data = JSON.parse(json)
+
+    for(var i=0;i<data.length;i++){
+        data[i]["date"]=data[i]["date"].slice(0,10);
+    }
+
+    var cardCounter = 0;
+    var groupCounter = 0;
+
+    function like(index) {
+        var heart = document.getElementById("heart" + index);
+        var heartPath = document.getElementById("svgPath"+index)
+        //console.log(heart)
+        var liked = heart.getAttribute("liked");
+        //console.log(liked)
+        var likes = document.getElementById("likes" + index);
+        //console.log(likes.innerHTML)
+
+        if (liked == "no") {
+            heart.setAttribute("liked", "yes");
+            heart.style.fill = "red";
+            heartPath.style.stroke="red";
+            likes.innerHTML = parseInt(likes.innerHTML) + 1;
+        }
+        else {
+            heart.setAttribute("liked", "no");
+            heart.style.fill = "white";
+            heartPath.style.stroke="gray";
+            likes.innerHTML = parseInt(likes.innerHTML) - 1;
+        }
+    }
+
+    function hoverLike(index){
+        var heart = document.getElementById("heart" + index);
+        var liked = heart.getAttribute("liked");
+        var heartPath = document.getElementById("svgPath"+index)
+        if(liked=="no"){
+            heartPath.style.stroke="gray";
+        }
+    }
+
+    function onmouseoutLike(index){
+        var heart = document.getElementById("heart" + index);
+        var liked = heart.getAttribute("liked");
+        var heartPath = document.getElementById("svgPath"+index)
+        if(liked=="no"){
+            heartPath.style.stroke="black";
+        }
+    }
+
+
+    function loadMore() {
+        if (4 * groupCounter != data.length) {
+            var button = document.getElementById("loadMoreButton");
+            if (button !== null)
+                document.getElementById("loadMoreButton").remove();
+            var cardGroup = document.createElement('div');
+            cardGroup.classList.add("cardContainer");
+            //cardGroup.className("row");
+            for (var i = 0; i < 4; i++) {
+                if(i==0 || i==2){
+                    cardGroup.innerHTML+=`<div class="twoCardsGroup">`;
+                }
+                cardGroup.innerHTML += `<div class="column card">
+        <div class="row profileRow" style="font-family: Georgia, serif;">
+            <div class="column up"><img class="profilePic" src=`+ data[i + (groupCounter * 4)]["profile_image"] + `></div>
+            <div class="column up userAndDate"><div class="row" style="font-size:22px; "><b>`+ data[i + (groupCounter * 4)]["name"] + `</b></div><div class="row">` + data[i + (groupCounter * 4)]["date"] + `</div></div>
+            <div class="column up igContainer"><img class="igLogo" src="instagram-logo.svg"></div>
+        </div><br><br>
+        <div class="row postPictureRow"><img class='post_picture' src=`+ data[i + (groupCounter * 4)]["image"] + `></div><br>
+        <div class="row captionRow"><p>`+ data[i + (groupCounter * 4)]["caption"] + `</p></div><br>
+        <div class="row likesRow"><hr><svg onmouseout="onmouseoutLike(`+(i + (groupCounter * 4))+`)"onmouseover="hoverLike(`+(i + (groupCounter * 4))+`)" onclick="like(`+ (i + (groupCounter * 4)) + `)" liked="no" style="fill: white; stroke:black;" id="heart` + (i + (groupCounter * 4)) + `" width="17" height="17" viewBox="0 0 17 17" fill="none" stroke="black" xmlns="http://www.w3.org/2000/svg">
+<path class="svgPath" id="svgPath`+(i + (groupCounter * 4))+`" d="M14.7617 3.26543C14.3999 2.90347 13.9703 2.61634 13.4976 2.42045C13.0248 2.22455 12.518 2.12372 12.0063 2.12372C11.4945 2.12372 10.9878 2.22455 10.515 2.42045C10.0422 2.61634 9.61263 2.90347 9.25085 3.26543L8.50001 4.01626L7.74918 3.26543C7.0184 2.53465 6.02725 2.1241 4.99376 2.1241C3.96028 2.1241 2.96913 2.53465 2.23835 3.26543C1.50756 3.99621 1.09702 4.98736 1.09702 6.02084C1.09702 7.05433 1.50756 8.04548 2.23835 8.77626L2.98918 9.52709L8.50001 15.0379L14.0108 9.52709L14.7617 8.77626C15.1236 8.41448 15.4108 7.98492 15.6067 7.51214C15.8026 7.03935 15.9034 6.53261 15.9034 6.02084C15.9034 5.50908 15.8026 5.00233 15.6067 4.52955C15.4108 4.05677 15.1236 3.62721 14.7617 3.26543V3.26543Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+<p style="display: inline; vertical-align: top;" id="likes`+ (i + (groupCounter * 4)) + `">` + data[i + (groupCounter * 4)]["likes"] + `</p></div>
+    </div>`;
+                if (i == 3) {
+                    groupCounter++;
+                }
+                if(i==1 || i==3){
+                    cardGroup.innerHTML+=`</div>`;
+                }
+            }
+            //console.log(cardGroup.innerHTML)
+            document.body.append(cardGroup)
+            document.body.innerHTML += '<br>'
+            var buttonContainer = document.createElement('div');
+            buttonContainer.classList.add("buttonContainer");
+            if (groupCounter != 4)
+                buttonContainer.innerHTML += `<button style="background-color: #008CBA; color:white; height:50px" id="loadMoreButton" class="loadMoreButton" onclick="loadMore()" type="button">LOAD MORE</button>`;
+            else
+                buttonContainer.innerHTML += `<button style="display: none;" id="loadMoreButton" class="loadMoreButton" onclick="loadMore()" type="button">LOAD MORE</button>`;
+            document.body.append(buttonContainer)
+        }
+    }
+    loadMore();
+</script>
+
+</html>
